@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initMagneticButtons();
     initRevealAnimations();
     initNavbarScroll();
-    initMarquee(); // New Marquee
+    initMarquee();
+    initGallery(); // New Gallery Logic
 });
 
 // Custom Cursor Logic
@@ -36,7 +37,7 @@ function initCursor() {
     });
 
     // Hover effects for cursor
-    const interactiveElements = document.querySelectorAll('a, button, .project-card, .interactive-tilt, .bento-item, .gallery-item, .click-trigger');
+    const interactiveElements = document.querySelectorAll('a, button, .project-card, .interactive-tilt, .bento-item, .gallery-item, .control-btn');
 
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
@@ -53,81 +54,42 @@ function initCursor() {
 
 // Hero Animations (Floating text)
 function initHeroAnimations() {
-    // Reveal Nav
     gsap.to('.nav-container', {
-        opacity: 1,
-        duration: 1,
-        delay: 0.5,
-        ease: 'power2.out'
+        opacity: 1, duration: 1, delay: 0.5, ease: 'power2.out'
     });
 
-    // Reveal Hero Text
     gsap.from('.word-line', {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: 'power3.out',
-        delay: 0.2
+        y: 100, opacity: 0, duration: 1, stagger: 0.2, ease: 'power3.out', delay: 0.2
     });
 
-    // Continuous Floating Animation for Shapes
     gsap.to('.shape-1', {
-        y: -30,
-        x: 20,
-        duration: 4,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut'
+        y: -30, x: 20, duration: 4, repeat: -1, yoyo: true, ease: 'sine.inOut'
     });
 
     gsap.to('.shape-2', {
-        y: 40,
-        x: -20,
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-        delay: 1
+        y: 40, x: -20, duration: 2, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1
     });
 
-    // Mouse Move Parallax for Hero
     const heroSection = document.querySelector('.hero-section');
     heroSection.addEventListener('mousemove', (e) => {
         const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
         const yPos = (e.clientY / window.innerHeight - 0.5) * 20;
 
-        gsap.to('.hero-title', {
-            x: xPos * 2,
-            y: yPos * 2,
-            duration: 1,
-            ease: 'power2.out'
-        });
-
-        gsap.to('.floating-shapes', {
-            x: -xPos * 4,
-            y: -yPos * 4,
-            duration: 1,
-            ease: 'power2.out'
-        });
+        gsap.to('.hero-title', { x: xPos * 2, y: yPos * 2, duration: 1, ease: 'power2.out' });
+        gsap.to('.floating-shapes', { x: -xPos * 4, y: -yPos * 4, duration: 1, ease: 'power2.out' });
     });
 }
 
 // Scroll Parallax Elements
 function initParallax() {
-    // Parallax for About Cards
     gsap.utils.toArray('.parallax').forEach(layer => {
         const depth = layer.getAttribute('data-speed');
-        const movement = -(layer.offsetHeight * depth * 0.2); // Adjust strength
+        const movement = -(layer.offsetHeight * depth * 0.2);
 
         gsap.to(layer, {
-            y: movement,
-            ease: "none",
+            y: movement, ease: "none",
             scrollTrigger: {
-                trigger: layer,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true
+                trigger: layer, start: "top bottom", end: "bottom top", scrub: true
             }
         });
     });
@@ -135,7 +97,7 @@ function initParallax() {
 
 // Magnetic Buttons
 function initMagneticButtons() {
-    const magnets = document.querySelectorAll('.magnetic-btn');
+    const magnets = document.querySelectorAll('.magnetic-btn, .control-btn');
 
     magnets.forEach((magnet) => {
         magnet.addEventListener('mousemove', (e) => {
@@ -143,191 +105,105 @@ function initMagneticButtons() {
             const x = e.clientX - bound.left - bound.width / 2;
             const y = e.clientY - bound.top - bound.height / 2;
 
-            gsap.to(magnet, {
-                x: x * 0.4,
-                y: y * 0.4,
-                duration: 0.3,
-                ease: 'power2.out'
-            });
+            gsap.to(magnet, { x: x * 0.4, y: y * 0.4, duration: 0.3, ease: 'power2.out' });
 
-            // Move text inside slightly more
             const text = magnet.querySelector('.btn-text, span');
             if (text) {
-                gsap.to(text, {
-                    x: x * 0.1,
-                    y: y * 0.1,
-                    duration: 0.3,
-                    ease: 'power2.out'
-                });
+                gsap.to(text, { x: x * 0.1, y: y * 0.1, duration: 0.3, ease: 'power2.out' });
             }
         });
 
         magnet.addEventListener('mouseleave', () => {
-            gsap.to(magnet, {
-                x: 0,
-                y: 0,
-                duration: 0.5,
-                ease: 'elastic.out(1, 0.3)'
-            });
-
+            gsap.to(magnet, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.3)' });
             const text = magnet.querySelector('.btn-text, span');
             if (text) {
-                gsap.to(text, {
-                    x: 0,
-                    y: 0,
-                    duration: 0.5,
-                    ease: 'elastic.out(1, 0.3)'
-                });
+                gsap.to(text, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.3)' });
             }
         });
     });
 }
 
-// Reveal on Scroll
+// Reveal on Scroll (Handles new sections automatically)
 function initRevealAnimations() {
     const sections = document.querySelectorAll('section');
 
     sections.forEach(section => {
-        gsap.from(section.querySelectorAll('.section-title, .section-label'), {
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.1,
-            ease: "power2.out",
+        gsap.from(section.querySelectorAll('.section-title, .section-label, .section-desc'), {
+            y: 50, opacity: 0, duration: 1, stagger: 0.1, ease: "power2.out",
             scrollTrigger: {
-                trigger: section,
-                start: "top 80%",
-                toggleActions: "play none none reverse"
+                trigger: section, start: "top 80%", toggleActions: "play none none reverse"
             }
         });
     });
 
-    // Stagger projects
     gsap.from('.project-card', {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-            trigger: '.projects-grid',
-            start: "top 75%"
-        }
+        y: 100, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out",
+        scrollTrigger: { trigger: '.projects-grid', start: "top 75%" }
     });
 
-    // Bento Grid Reveal
     gsap.from('.bento-item', {
-        y: 60,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: '.bento-grid',
-            start: "top 80%"
-        }
+        y: 60, opacity: 0, duration: 1, stagger: 0.1, ease: "power2.out",
+        scrollTrigger: { trigger: '.bento-grid', start: "top 80%" }
     });
 
-    // Gallery Items
-    gsap.from('.gallery-item', {
-        scale: 0.8,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-            trigger: '.gallery-track',
-            start: "top 85%"
-        }
+    // Testimonials
+    gsap.from('.testimonial-card', {
+        y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out",
+        scrollTrigger: { trigger: '.testimonials-grid', start: "top 80%" }
     });
 }
 
 // Smart Navbar Scroll
 function initNavbarScroll() {
     const nav = document.querySelector('.nav-container');
-
-    // Hide/Show on scroll direction
     const showAnim = gsap.from(nav, {
-        yPercent: -100,
-        paused: true,
-        duration: 0.4,
-        ease: "power2.inOut"
-    }).progress(1); // Start revealed
+        yPercent: -100, paused: true, duration: 0.4, ease: "power2.inOut"
+    }).progress(1);
 
     ScrollTrigger.create({
-        start: "top top",
-        end: 99999,
+        start: "top top", end: 99999,
         onUpdate: (self) => {
-            const scrollThreshold = 100;
+            if (self.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
 
-            // Add background glass effect
-            if (self.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-
-            // Logic for hide/show
-            if (self.scrollY < scrollThreshold) {
-                showAnim.play();
-                return;
-            }
-
-            if (self.direction === -1) {
-                showAnim.play();
-            } else {
-                showAnim.reverse();
-            }
+            if (self.scrollY < 100) { showAnim.play(); return; }
+            if (self.direction === -1) showAnim.play();
+            else showAnim.reverse();
         }
+    });
+
+    // Smooth scroll for anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
 }
 
 // Partners Marquee Logic
 function initMarquee() {
     const track = document.querySelector('.marquee-track');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-
     if (!track) return;
 
-    // We used CSS animation for the marquee. 
-    // We can interact with it by checking if it exists, or overriding with GSAP.
-    // Let's use GSAP for smoother control especially with buttons.
-
-    // 1. Pause CSS animation
-    track.style.animation = 'none';
-
-    // 2. Setup GSAP Loop
-    // The content is already duplicated in HTML for the visual fill.
-    // We just need to move it -50% and repeat.
-
     const tween = gsap.to(track, {
-        x: "-50%",
-        repeat: -1,
-        duration: 20,
-        ease: "none"
+        x: "-50%", repeat: -1, duration: 20, ease: "none"
     });
 
-    if (prevBtn && nextBtn) {
-        // Reverse
-        prevBtn.addEventListener('click', () => {
-            gsap.to(tween, { timeScale: -1.5, duration: 0.5 });
-            // Return to normal after a bit? Or toggle? Let's toggle direction.
-        });
+    document.getElementById('prev-btn')?.addEventListener('click', () => {
+        gsap.to(tween, { timeScale: -1.5, duration: 0.5 });
+    });
 
-        // Forward
-        nextBtn.addEventListener('click', () => {
-            gsap.to(tween, { timeScale: 1.5, duration: 0.5 });
-        });
+    document.getElementById('next-btn')?.addEventListener('click', () => {
+        gsap.to(tween, { timeScale: 1.5, duration: 0.5 });
+    });
 
-        // Reset speed on hover out of controls
-        const controls = document.querySelector('.marquee-controls');
-        controls.addEventListener('mouseleave', () => {
-            gsap.to(tween, { timeScale: 1, duration: 1 });
-        });
-    }
-
-    // Interactive: Slow down on hover
     track.parentElement.addEventListener('mouseenter', () => {
         gsap.to(tween, { timeScale: 0.2, duration: 0.5 });
     });
@@ -335,4 +211,33 @@ function initMarquee() {
     track.parentElement.addEventListener('mouseleave', () => {
         gsap.to(tween, { timeScale: 1, duration: 0.5 });
     });
+}
+
+// Gallery Logic (Play/Pause)
+function initGallery() {
+    const track = document.getElementById('gallery-track');
+    const toggleBtn = document.getElementById('gallery-toggle');
+
+    if (!track) return;
+
+    // Infinite scroll for gallery
+    const galleryTween = gsap.to(track, {
+        x: "-50%", repeat: -1, duration: 30, ease: "none"
+    });
+
+    let isPlaying = true;
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                galleryTween.pause();
+                toggleBtn.innerHTML = '<span class="icon-play">>></span>'; // Change to Play icon
+                isPlaying = false;
+            } else {
+                galleryTween.play();
+                toggleBtn.innerHTML = '<span class="icon-play">||</span>'; // Change to Pause icon
+                isPlaying = true;
+            }
+        });
+    }
 }

@@ -180,49 +180,97 @@
                 </div>
             </section>
 
-            <!-- NEWS / BLOG SECTION -->
-            <section id="news" class="blog-section">
+            <!-- NEWS: PRESS RELEASE SECTION -->
+            <section id="press" class="news-section">
                 <div class="container">
                     <div class="section-header">
-                        <span class="section-label">Journal</span>
-                        <h2 class="section-title">Latest & Greatest</h2>
+                        <span class="section-label">Press Release</span>
+                        <h2 class="section-title">In The Headlines</h2>
                     </div>
                     <div class="bento-grid">
-                        <!-- Featured Item -->
                         <div class="bento-item featured glass-card">
                             <div class="bento-bg gradient-1"></div>
                             <div class="bento-content">
                                 <span class="bento-tag">Featured</span>
-                                <h3>The Future of Digital Float</h3>
-                                <p>Exploring how anti-gravity design principles are shaping the next decade of web
-                                    interfaces.</p>
-                                <a href="#" class="read-more">Read Article →</a>
-                            </div>
-                        </div>
-                        <!-- Standard Items -->
-                        <div class="bento-item glass-card">
-                            <div class="bento-content">
-                                <span class="bento-tag">Press</span>
-                                <h3>Award Nomination</h3>
-                                <p>We've been nominated for Site of the Day.</p>
-                            </div>
-                        </div>
-                        <div class="bento-item glass-card">
-                            <div class="bento-content">
-                                <span class="bento-tag">Update</span>
-                                <h3>Nebula V2.0</h3>
-                                <p>Major update to our finance dashboard.</p>
+                                <h3>SARKAR Wins Digital Innovation Award 2026</h3>
+                                <p>Recognized for pushing the boundaries of web interactivity and physics-based design.
+                                </p>
+                                <a href="#" class="read-more">Read Full Story →</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- GALLERY SECTION -->
+            <!-- NEWS: NEWSLETTER SECTION -->
+            <section id="newsletter" class="newsletter-section">
+                <div class="container">
+                    <div class="glass-card center-content">
+                        <span class="section-label">Newsletter</span>
+                        <h2 class="section-title">The Anti-Gravity Digest</h2>
+                        <p class="section-desc">Join 10,000+ designers exploring the future of UI. Weekly insights, no
+                            spam.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Enter your email" class="glass-input">
+                            <button type="submit" class="magnetic-btn small-btn">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NEWS: BLOG SECTION -->
+            <section id="blog" class="blog-section">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-label">Blog</span>
+                        <h2 class="section-title">Design Thoughts</h2>
+                    </div>
+                    <div class="bento-grid">
+                        <div class="bento-item glass-card">
+                            <div class="bento-content">
+                                <span class="bento-tag">Opinion</span>
+                                <h3>The End of the Scrollbar?</h3>
+                                <p>Why gesture-based navigation is taking over.</p>
+                            </div>
+                        </div>
+                        <div class="bento-item glass-card">
+                            <div class="bento-content">
+                                <span class="bento-tag">Tutorial</span>
+                                <h3>Creating Liquid Motions</h3>
+                                <p>A deep dive into WebGL fluid simulations.</p>
+                            </div>
+                        </div>
+                        <div class="bento-item glass-card">
+                            <div class="bento-content">
+                                <span class="bento-tag">Case Study</span>
+                                <h3>Redesigning Bank of Future</h3>
+                                <p>From boring tables to interactive data viz.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GALLERY SECTION (Enhanced) -->
             <section id="gallery" class="gallery-section">
                 <div class="container">
+                    <div class="section-header">
+                        <span class="section-label">Visual Archive</span>
+                        <h2 class="section-title">Moments in Zero-G</h2>
+                        <p class="section-desc-left">A curated collection of visual experiments and behind-the-scenes
+                            glimpses.</p>
+                    </div>
+
+                    <div class="gallery-controls">
+                        <button id="gallery-toggle" class="control-btn" aria-label="Play/Pause">
+                            <span class="icon-play">||</span>
+                            <!-- Using simple text representation, can be replaced with SVG -->
+                        </button>
+                    </div>
+
                     <div class="gallery-track-wrapper">
-                        <div class="gallery-track">
+                        <div class="gallery-track" id="gallery-track">
+                            <!-- Duplicated items for potential infinite scroll logic if needed, or just enough content -->
                             <div class="gallery-item">
                                 <div class="placeholder-gradient gradient-2"></div>
                             </div>
@@ -237,6 +285,50 @@
                             </div>
                             <div class="gallery-item">
                                 <div class="placeholder-gradient gradient-3"></div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="placeholder-gradient gradient-1"></div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="placeholder-gradient gradient-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TESTIMONIALS SECTION (New) -->
+            <section id="testimonials" class="testimonials-section">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-label">Voices</span>
+                        <h2 class="section-title">Client Whispers</h2>
+                    </div>
+                    <div class="testimonials-grid">
+                        <!-- Card 1 -->
+                        <div class="testimonial-card glass-card">
+                            <div class="quote-icon">“</div>
+                            <p class="quote-text">Sarkar didn't just build a website; they built a universe for our
+                                brand. The physics interactions transformed our user engagement metrics entirely.</p>
+                            <div class="client-info">
+                                <div class="client-avatar gradient-1"></div>
+                                <div>
+                                    <h4>Elena Void</h4>
+                                    <span>CEO, Nebula Finance</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="testimonial-card glass-card">
+                            <div class="quote-icon">“</div>
+                            <p class="quote-text">Absolute wizardry. The site feels alive. It breathes. I've never seen
+                                code behave so organically before.</p>
+                            <div class="client-info">
+                                <div class="client-avatar gradient-2"></div>
+                                <div>
+                                    <h4>Marcus Ray</h4>
+                                    <span>Director, Orbital Space</span>
+                                </div>
                             </div>
                         </div>
                     </div>
