@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMagneticButtons();
     initRevealAnimations();
     initNavbarScroll();
+    initMarquee(); // New Marquee
 });
 
 // Custom Cursor Logic
@@ -35,7 +36,7 @@ function initCursor() {
     });
 
     // Hover effects for cursor
-    const interactiveElements = document.querySelectorAll('a, button, .project-card, .interactive-tilt');
+    const interactiveElements = document.querySelectorAll('a, button, .project-card, .interactive-tilt, .bento-item, .gallery-item, .click-trigger');
 
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
@@ -150,7 +151,7 @@ function initMagneticButtons() {
             });
 
             // Move text inside slightly more
-            const text = magnet.querySelector('span');
+            const text = magnet.querySelector('.btn-text, span');
             if (text) {
                 gsap.to(text, {
                     x: x * 0.1,
@@ -169,7 +170,7 @@ function initMagneticButtons() {
                 ease: 'elastic.out(1, 0.3)'
             });
 
-            const text = magnet.querySelector('span');
+            const text = magnet.querySelector('.btn-text, span');
             if (text) {
                 gsap.to(text, {
                     x: 0,
@@ -213,11 +214,39 @@ function initRevealAnimations() {
             start: "top 75%"
         }
     });
+
+    // Bento Grid Reveal
+    gsap.from('.bento-item', {
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: '.bento-grid',
+            start: "top 80%"
+        }
+    });
+
+    // Gallery Items
+    gsap.from('.gallery-item', {
+        scale: 0.8,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: '.gallery-track',
+            start: "top 85%"
+        }
+    });
 }
 
 // Smart Navbar Scroll
 function initNavbarScroll() {
     const nav = document.querySelector('.nav-container');
+
+    // Hide/Show on scroll direction
     const showAnim = gsap.from(nav, {
         yPercent: -100,
         paused: true,
@@ -229,20 +258,81 @@ function initNavbarScroll() {
         start: "top top",
         end: 99999,
         onUpdate: (self) => {
-            const scrollThreshold = window.innerHeight * 0.2; // 20% of viewport
+            const scrollThreshold = 100;
 
-            // If scrolled less than 20%, always show
+            // Add background glass effect
+            if (self.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+
+            // Logic for hide/show
             if (self.scrollY < scrollThreshold) {
                 showAnim.play();
                 return;
             }
 
-            // Direction: 1 = down, -1 = up
             if (self.direction === -1) {
-                showAnim.play(); // Show on scroll up
+                showAnim.play();
             } else {
-                showAnim.reverse(); // Hide on scroll down
+                showAnim.reverse();
             }
         }
+    });
+}
+
+// Partners Marquee Logic
+function initMarquee() {
+    const track = document.querySelector('.marquee-track');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    if (!track) return;
+
+    // We used CSS animation for the marquee. 
+    // We can interact with it by checking if it exists, or overriding with GSAP.
+    // Let's use GSAP for smoother control especially with buttons.
+
+    // 1. Pause CSS animation
+    track.style.animation = 'none';
+
+    // 2. Setup GSAP Loop
+    // The content is already duplicated in HTML for the visual fill.
+    // We just need to move it -50% and repeat.
+
+    const tween = gsap.to(track, {
+        x: "-50%",
+        repeat: -1,
+        duration: 20,
+        ease: "none"
+    });
+
+    if (prevBtn && nextBtn) {
+        // Reverse
+        prevBtn.addEventListener('click', () => {
+            gsap.to(tween, { timeScale: -1.5, duration: 0.5 });
+            // Return to normal after a bit? Or toggle? Let's toggle direction.
+        });
+
+        // Forward
+        nextBtn.addEventListener('click', () => {
+            gsap.to(tween, { timeScale: 1.5, duration: 0.5 });
+        });
+
+        // Reset speed on hover out of controls
+        const controls = document.querySelector('.marquee-controls');
+        controls.addEventListener('mouseleave', () => {
+            gsap.to(tween, { timeScale: 1, duration: 1 });
+        });
+    }
+
+    // Interactive: Slow down on hover
+    track.parentElement.addEventListener('mouseenter', () => {
+        gsap.to(tween, { timeScale: 0.2, duration: 0.5 });
+    });
+
+    track.parentElement.addEventListener('mouseleave', () => {
+        gsap.to(tween, { timeScale: 1, duration: 0.5 });
     });
 }

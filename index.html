@@ -30,6 +30,29 @@
         <div class="nav-links">
             <a href="#about" class="nav-link">About</a>
             <a href="#projects" class="nav-link">Work</a>
+            <div class="nav-item-dropdown">
+                <a href="#news" class="nav-link">News</a>
+                <div class="dropdown-menu glass-card">
+                    <div class="dropdown-content">
+                        <a href="#press" class="dropdown-link">
+                            <span class="link-title">Press Release</span>
+                            <span class="link-desc">Latest announcements</span>
+                        </a>
+                        <a href="#newsletter" class="dropdown-link">
+                            <span class="link-title">Newsletter</span>
+                            <span class="link-desc">Insights & updates</span>
+                        </a>
+                        <a href="#blog" class="dropdown-link">
+                            <span class="link-title">Blog</span>
+                            <span class="link-desc">Thoughts on design</span>
+                        </a>
+                        <a href="#gallery" class="dropdown-link">
+                            <span class="link-title">Gallery</span>
+                            <span class="link-desc">Visual stories</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <a href="#contact" class="nav-link">Contact</a>
         </div>
     </nav>
@@ -57,6 +80,34 @@
                     <div class="shape shape-1 float-slow"></div>
                     <div class="shape shape-2 float-medium"></div>
                     <div class="shape shape-3 float-fast"></div>
+                </div>
+            </section>
+
+            <!-- PARTNERS MARQUEE -->
+            <section class="partners-section">
+                <div class="marquee-container">
+                    <div class="marquee-track">
+                        <!-- Duplicated for infinite loop -->
+                        <span class="partner-logo">Google</span>
+                        <span class="partner-logo">Tesla</span>
+                        <span class="partner-logo">SpaceX</span>
+                        <span class="partner-logo">Adobe</span>
+                        <span class="partner-logo">Stripe</span>
+                        <span class="partner-logo">Nike</span>
+                        <span class="partner-logo">Apple</span>
+                        <span class="partner-logo">Google</span>
+                        <span class="partner-logo">Tesla</span>
+                        <span class="partner-logo">SpaceX</span>
+                        <span class="partner-logo">Adobe</span>
+                        <span class="partner-logo">Stripe</span>
+                        <span class="partner-logo">Nike</span>
+                        <span class="partner-logo">Apple</span>
+                    </div>
+                </div>
+                <!-- Optional controls if needed by user, but infinite marquee is cleaner for <marquee> effect. Adding simple controls for request. -->
+                <div class="marquee-controls">
+                    <button class="control-btn" id="prev-btn">←</button>
+                    <button class="control-btn" id="next-btn">→</button>
                 </div>
             </section>
 
@@ -129,46 +180,137 @@
                 </div>
             </section>
 
+            <!-- NEWS / BLOG SECTION -->
+            <section id="news" class="blog-section">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-label">Journal</span>
+                        <h2 class="section-title">Latest & Greatest</h2>
+                    </div>
+                    <div class="bento-grid">
+                        <!-- Featured Item -->
+                        <div class="bento-item featured glass-card">
+                            <div class="bento-bg gradient-1"></div>
+                            <div class="bento-content">
+                                <span class="bento-tag">Featured</span>
+                                <h3>The Future of Digital Float</h3>
+                                <p>Exploring how anti-gravity design principles are shaping the next decade of web
+                                    interfaces.</p>
+                                <a href="#" class="read-more">Read Article →</a>
+                            </div>
+                        </div>
+                        <!-- Standard Items -->
+                        <div class="bento-item glass-card">
+                            <div class="bento-content">
+                                <span class="bento-tag">Press</span>
+                                <h3>Award Nomination</h3>
+                                <p>We've been nominated for Site of the Day.</p>
+                            </div>
+                        </div>
+                        <div class="bento-item glass-card">
+                            <div class="bento-content">
+                                <span class="bento-tag">Update</span>
+                                <h3>Nebula V2.0</h3>
+                                <p>Major update to our finance dashboard.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GALLERY SECTION -->
+            <section id="gallery" class="gallery-section">
+                <div class="container">
+                    <div class="gallery-track-wrapper">
+                        <div class="gallery-track">
+                            <div class="gallery-item">
+                                <div class="placeholder-gradient gradient-2"></div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="placeholder-gradient gradient-3"></div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="placeholder-gradient gradient-1"></div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="placeholder-gradient gradient-2"></div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="placeholder-gradient gradient-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- CONTACT SECTION -->
             <section id="contact" class="contact-section">
                 <div class="container center-content">
+                    <span class="section-label">Collaborate</span>
                     <h2 class="contact-title float-element">Let's Float Together</h2>
                     <p class="contact-text">Ready to elevate your digital presence?</p>
-                    <a href="mailto:hello@aether.design" class="contact-link magnetic-btn">
-                        Get in Touch
+                    <a href="mailto:hello@sarkar.design" class="contact-link magnetic-btn">
+                        <span class="btn-text">Get in Touch</span>
                     </a>
                 </div>
             </section>
 
             <footer class="main-footer">
-                <div class="social-links">
-                    <a href="#" class="social-icon" aria-label="GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                            </path>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-icon" aria-label="LinkedIn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
-                            </path>
-                            <rect x="2" y="9" width="4" height="12"></rect>
-                            <circle cx="4" cy="4" r="2"></circle>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-icon" aria-label="Twitter">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-12.7 12.5S.2 5.3 7.8 4.5c2.1-.2 3.2.4 4.4 1.2 2.1-2 5.2-3.3 9.8-1.7zm-9 12v.1">
-                            </path>
-                        </svg>
-                    </a>
+                <div class="container footer-grid">
+                    <div class="footer-brand">
+                        <div class="logo">SARKAR</div>
+                        <p class="footer-desc">Premium digital experiences born from void.</p>
+                    </div>
+
+                    <div class="footer-links">
+                        <h4>Explore</h4>
+                        <a href="#projects">Work</a>
+                        <a href="#about">About</a>
+                        <a href="#news">Journal</a>
+                    </div>
+
+                    <div class="footer-contact">
+                        <h4>Contact</h4>
+                        <a href="mailto:hello@sarkar.design">hello@sarkar.design</a>
+                        <p>+1 (555) 000-0000</p>
+                        <p>123 Zero Gravity Way, NY</p>
+                    </div>
+
+                    <div class="social-links-footer">
+                        <a href="#" class="social-icon" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-12.7 12.5S.2 5.3 7.8 4.5c2.1-.2 3.2.4 4.4 1.2 2.1-2 5.2-3.3 9.8-1.7zm-9 12v.1">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <p>&copy; 2026 Aether. Designed in Zero-G.</p>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 SARKAR. Designed in Zero-G.</p>
+                </div>
             </footer>
 
         </div>
