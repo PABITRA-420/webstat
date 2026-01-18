@@ -5,31 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SARKAR | Creative Developer</title>
-    <meta name="description" content="Premium Digital Experiences.">
+    <meta name="description" content="Premium Digital Experiences. Defying Gravity.">
 
-    <!-- Fonts -->
+    <!-- Fonts: Inter & Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@300;600;800&display=swap"
         rel="stylesheet">
 
-    <!-- Styles -->
+    <!-- Favicon -->
+    <!-- [UPDATE REQUIRED] Change href below to your custom favicon -->
+    <link rel="icon" href="images/favicon.png" type="image/png">
+
+    <!-- Social Meta Tags -->
+    <meta property="og:title" content="SARKAR | Creative Developer">
+    <meta property="og:description" content="Premium Digital Experiences. Defying Gravity.">
+    <meta property="og:image" content="https://sarkar.design/images/og-image.png">
+    <meta property="og:url" content="https://sarkar.design">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            // Initialize EmailJS with Public Key
+            emailjs.init({
+                publicKey: "E6q40bIx9XDAY3PaE",
+            });
+        })();
+    </script>
 </head>
 
 <body>
 
-    <!-- Custom Cursor -->
+    <!-- === Custom Cursor === -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
-    <!-- Navigation -->
+    <!-- === Navigation === -->
     <nav class="nav-container">
         <div class="logo">SARKAR</div>
         <div class="nav-links">
             <a href="#about" class="nav-link">About</a>
             <a href="#projects" class="nav-link">Work</a>
+            <!-- Dropdown for News -->
             <div class="nav-item-dropdown">
                 <a href="#news" class="nav-link">News</a>
                 <div class="dropdown-menu glass-card">
@@ -57,10 +80,11 @@
         </div>
     </nav>
 
+    <!-- === Main Content (Wrapped for Smooth Scroll if needed) === -->
     <main id="smooth-wrapper">
         <div id="smooth-content">
 
-            <!-- HERO SECTION -->
+            <!-- === HERO SECTION === -->
             <section class="hero-section">
                 <div class="hero-content">
                     <h1 class="hero-title float-element" data-speed="1.2">
@@ -75,7 +99,7 @@
                     </a>
                 </div>
 
-                <!-- Abstract Floating Objects -->
+                <!-- Abstract Floating Background Objects -->
                 <div class="floating-shapes">
                     <div class="shape shape-1 float-slow"></div>
                     <div class="shape shape-2 float-medium"></div>
@@ -83,11 +107,11 @@
                 </div>
             </section>
 
-            <!-- PARTNERS MARQUEE -->
+            <!-- === PARTNERS MARQUEE === -->
             <section class="partners-section">
                 <div class="marquee-container">
                     <div class="marquee-track">
-                        <!-- Duplicated for infinite loop -->
+                        <!-- Duplicated logos for seamless infinite loop -->
                         <span class="partner-logo">Google</span>
                         <span class="partner-logo">Tesla</span>
                         <span class="partner-logo">SpaceX</span>
@@ -95,6 +119,7 @@
                         <span class="partner-logo">Stripe</span>
                         <span class="partner-logo">Nike</span>
                         <span class="partner-logo">Apple</span>
+                        <!-- Duplicate set -->
                         <span class="partner-logo">Google</span>
                         <span class="partner-logo">Tesla</span>
                         <span class="partner-logo">SpaceX</span>
@@ -104,14 +129,14 @@
                         <span class="partner-logo">Apple</span>
                     </div>
                 </div>
-                <!-- Optional controls if needed by user, but infinite marquee is cleaner for <marquee> effect. Adding simple controls for request. -->
+                <!-- Controls displayed on hover -->
                 <div class="marquee-controls">
                     <button class="control-btn" id="prev-btn">←</button>
                     <button class="control-btn" id="next-btn">→</button>
                 </div>
             </section>
 
-            <!-- ABOUT SECTION -->
+            <!-- === ABOUT SECTION === -->
             <section id="about" class="about-section">
                 <div class="container">
                     <div class="section-header">
@@ -121,21 +146,27 @@
                     <div class="about-grid">
                         <div class="about-card glass-card parallax" data-speed="0.9">
                             <h3>Design</h3>
-                            <p>Minimalist aesthetics that breathe and float. Every pixel is placed with intention.</p>
+                            <p>Design embodies minimalist aesthetics that breathe and float, where every pixel is placed
+                                with deep intention. We prioritize negative space and functional discipline to create a
+                                weightless, clear, and timeless experience.</p>
                         </div>
                         <div class="about-card glass-card parallax" data-speed="1.1">
                             <h3>Engineering</h3>
-                            <p>Solid architecture masked by fluid motion. Performance behaviors that feel organic.</p>
+                            <p>Engineering provides a solid architecture masked by fluid motion, ensuring performance
+                                behaviors feel inherently organic. We build resilient, high-speed systems that remain
+                                invisible while providing a stable foundation for innovation.</p>
                         </div>
                         <div class="about-card glass-card parallax" data-speed="1.0">
                             <h3>Motion</h3>
-                            <p>Physics-based interactions that bring the interface to life.</p>
+                            <p>Motion utilizes physics-based interactions to bring interfaces to life, ensuring every
+                                transition feels purposeful. These intentional movements provide cognitive continuity,
+                                transforming digital actions into a tactile and naturally flowing narrative.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- PROJECTS SECTION -->
+            <!-- === PROJECTS SECTION === -->
             <section id="projects" class="projects-section">
                 <div class="container">
                     <div class="section-header">
@@ -147,7 +178,8 @@
                         <!-- Project 1 -->
                         <article class="project-card interactive-tilt">
                             <div class="project-image">
-                                <div class="placeholder-gradient gradient-1"></div>
+                                <div class="placeholder-gradient gradient-1"><img src="images/fintech.png"
+                                        alt="Fintech Dashboard"></div>
                             </div>
                             <div class="project-info">
                                 <h3>Nebula Finance</h3>
@@ -155,10 +187,11 @@
                             </div>
                         </article>
 
-                        <!-- Project 2 -->
+                        <!-- Project 2 (Staggered Layout) -->
                         <article class="project-card interactive-tilt">
                             <div class="project-image">
-                                <div class="placeholder-gradient gradient-2"></div>
+                                <div class="placeholder-gradient gradient-2"><img src="images/space.png"
+                                        alt="Space Explorer"></div>
                             </div>
                             <div class="project-info">
                                 <h3>Orbital</h3>
@@ -169,7 +202,8 @@
                         <!-- Project 3 -->
                         <article class="project-card interactive-tilt">
                             <div class="project-image">
-                                <div class="placeholder-gradient gradient-3"></div>
+                                <div class="placeholder-gradient gradient-3"><img src="images/fashion.png"
+                                        alt="Fashion eCommerce"></div>
                             </div>
                             <div class="project-info">
                                 <h3>Void</h3>
@@ -180,7 +214,7 @@
                 </div>
             </section>
 
-            <!-- NEWS: PRESS RELEASE SECTION -->
+            <!-- === PRESS RELEASE SECTION === -->
             <section id="press" class="news-section">
                 <div class="container">
                     <div class="section-header">
@@ -202,7 +236,28 @@
                 </div>
             </section>
 
-            <!-- NEWS: NEWSLETTER SECTION -->
+            <!-- Story Modal (Hidden by default) -->
+            <div id="story-modal" class="modal-backdrop">
+                <div class="modal-content glass-card">
+                    <button class="close-modal">&times;</button>
+                    <h2>SARKAR Wins Digital Innovation Award 2026</h2>
+                    <p class="modal-date">Jan 18, 2026</p>
+                    <div class="modal-body">
+                        <p>We are thrilled to announce that SARKAR has been recognized with the prestigious Digital
+                            Innovation Award 2026. This accolade celebrates our commitment to pushing the boundaries of
+                            web interactivity and physics-based design.</p>
+                        <p>Our recent project, "Zero Gravity," demonstrated how web interfaces can mimic physical laws,
+                            creating a sense of weightlessness and fluidity that users have never experienced before. By
+                            leveraging advanced WebGL techniques and custom physics engines, we've redefined what a
+                            website can feel like.</p>
+                        <p>"This award is a testament to our team's relentless pursuit of the impossible," says the
+                            founder. "We believe the future of the web is not just about information, but about
+                            feeling."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- === NEWSLETTER SECTION === -->
             <section id="newsletter" class="newsletter-section">
                 <div class="container">
                     <div class="glass-card center-content">
@@ -210,15 +265,16 @@
                         <h2 class="section-title">The Anti-Gravity Digest</h2>
                         <p class="section-desc">Join 10,000+ designers exploring the future of UI. Weekly insights, no
                             spam.</p>
-                        <form class="newsletter-form">
-                            <input type="email" placeholder="Enter your email" class="glass-input">
+                        <form class="newsletter-form" id="newsletter-form">
+                            <input type="email" name="email" placeholder="Enter your email" class="glass-input"
+                                required>
                             <button type="submit" class="magnetic-btn small-btn">Subscribe</button>
                         </form>
                     </div>
                 </div>
             </section>
 
-            <!-- NEWS: BLOG SECTION -->
+            <!-- === BLOG SECTION === -->
             <section id="blog" class="blog-section">
                 <div class="container">
                     <div class="section-header">
@@ -227,6 +283,9 @@
                     </div>
                     <div class="bento-grid">
                         <div class="bento-item glass-card">
+                            <div class="bento-image">
+                                <img src="images/space.png" alt="Gesture navigation">
+                            </div>
                             <div class="bento-content">
                                 <span class="bento-tag">Opinion</span>
                                 <h3>The End of the Scrollbar?</h3>
@@ -234,6 +293,9 @@
                             </div>
                         </div>
                         <div class="bento-item glass-card">
+                            <div class="bento-image">
+                                <img src="images/space.png" alt="Fluid simulations">
+                            </div>
                             <div class="bento-content">
                                 <span class="bento-tag">Tutorial</span>
                                 <h3>Creating Liquid Motions</h3>
@@ -241,6 +303,9 @@
                             </div>
                         </div>
                         <div class="bento-item glass-card">
+                            <div class="bento-image">
+                                <img src="images/space.png" alt="Data visualization">
+                            </div>
                             <div class="bento-content">
                                 <span class="bento-tag">Case Study</span>
                                 <h3>Redesigning Bank of Future</h3>
@@ -251,7 +316,7 @@
                 </div>
             </section>
 
-            <!-- GALLERY SECTION (Enhanced) -->
+            <!-- === GALLERY SECTION === -->
             <section id="gallery" class="gallery-section">
                 <div class="container">
                     <div class="section-header">
@@ -264,46 +329,53 @@
                     <div class="gallery-controls">
                         <button id="gallery-toggle" class="control-btn" aria-label="Play/Pause">
                             <span class="icon-play">||</span>
-                            <!-- Using simple text representation, can be replaced with SVG -->
                         </button>
                     </div>
 
                     <div class="gallery-track-wrapper">
                         <div class="gallery-track" id="gallery-track">
-                            <!-- Duplicated items for potential infinite scroll logic if needed, or just enough content -->
                             <div class="gallery-item">
-                                <div class="placeholder-gradient gradient-2"></div>
+                                <div class="placeholder-gradient gradient-2"><img src="images/space.png"
+                                        alt="Space Concept"></div>
                             </div>
                             <div class="gallery-item">
-                                <div class="placeholder-gradient gradient-3"></div>
+                                <div class="placeholder-gradient gradient-3"><img src="images/back2.jpg"
+                                        alt="Abstract Art"></div>
                             </div>
                             <div class="gallery-item">
-                                <div class="placeholder-gradient gradient-1"></div>
+                                <div class="placeholder-gradient gradient-1"><img src="images/back3.jpg" alt="Process">
+                                </div>
                             </div>
                             <div class="gallery-item">
-                                <div class="placeholder-gradient gradient-2"></div>
+                                <div class="placeholder-gradient gradient-2"><img src="images/back4.jpg"
+                                        alt="Development"></div>
                             </div>
                             <div class="gallery-item">
-                                <div class="placeholder-gradient gradient-3"></div>
+                                <div class="placeholder-gradient gradient-3"><img src="images/fashion.png"
+                                        alt="Fashion Shoot"></div>
                             </div>
                             <div class="gallery-item">
-                                <div class="placeholder-gradient gradient-1"></div>
+                                <div class="placeholder-gradient gradient-1"><img src="images/fintech.png"
+                                        alt="UI Design"></div>
                             </div>
                             <div class="gallery-item">
-                                <div class="placeholder-gradient gradient-2"></div>
+                                <div class="placeholder-gradient gradient-2"><img src="images/space.png" alt="Render">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- TESTIMONIALS SECTION (New) -->
+            <!-- === TESTIMONIALS SECTION === -->
             <section id="testimonials" class="testimonials-section">
                 <div class="container">
                     <div class="section-header">
                         <span class="section-label">Voices</span>
                         <h2 class="section-title">Client Whispers</h2>
                     </div>
+                </div>
+                <div class="container">
                     <div class="testimonials-grid">
                         <!-- Card 1 -->
                         <div class="testimonial-card glass-card">
@@ -331,22 +403,51 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Card 3 -->
+                        <div class="testimonial-card glass-card">
+                            <div class="quote-icon">“</div>
+                            <p class="quote-text">A visual masterpiece. The attention to detail in the
+                                micro-interactions is
+                                simply unparalleled in the industry.</p>
+                            <div class="client-info">
+                                <div class="client-avatar gradient-3"></div>
+                                <div>
+                                    <h4>Sarah Chen</h4>
+                                    <span>Lead Designer, Apex</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="testimonial-card glass-card">
+                            <div class="quote-icon">“</div>
+                            <p class="quote-text">Working with SARKAR was the best investment we made. Our conversion
+                                rates
+                                doubled within the first week of launch.</p>
+                            <div class="client-info">
+                                <div class="client-avatar gradient-1"></div>
+                                <div>
+                                    <h4>David Thorne</h4>
+                                    <span>Founder, Velocity</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- CONTACT SECTION -->
+            <!-- === CONTACT SECTION === -->
             <section id="contact" class="contact-section">
                 <div class="container center-content">
                     <span class="section-label">Collaborate</span>
                     <h2 class="contact-title float-element">Let's Float Together</h2>
                     <p class="contact-text">Ready to elevate your digital presence?</p>
-                    <a href="mailto:hello@sarkar.design" class="contact-link magnetic-btn">
+                    <a href="mailto:hello@sarkar.design" class="glass-btn magnetic-btn">
                         <span class="btn-text">Get in Touch</span>
                     </a>
                 </div>
             </section>
 
+            <!-- === FOOTER === -->
             <footer class="main-footer">
                 <div class="container footer-grid">
                     <div class="footer-brand">
@@ -401,18 +502,24 @@
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    <p>&copy; 2026 SARKAR. Designed in Zero-G.</p>
+                    <p>&copy; 2026 SARKAR. Designed in Z-lab.</p>
+                    <div class="visitor-counter">
+                        <span>Visitors: <span id="visitor-count">14,203</span></span>
+                    </div>
                 </div>
+
+                <!-- Go To Top Button -->
+                <button id="go-top-btn" class="magnetic-btn" aria-label="Go to Top">↑</button>
             </footer>
 
         </div>
     </main>
 
-    <!-- GSAP for Animation -->
+    <!-- === GSAP Animation & Plugins === -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <!-- App Script -->
+    <!-- === Main Script === -->
     <script src="js/app.js"></script>
 </body>
 

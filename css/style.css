@@ -1,20 +1,38 @@
+/* =========================================
+   SARKAR | Premium Creative Portfolio
+   Styles - Gold Master v1.0
+   ========================================= */
+
+/* --- Variables & Configuration --- */
 :root {
+    /* Color Palette */
     --bg-color: #050505;
+    /* Deep void black */
     --text-color: #ffffff;
+    /* Pure white text */
     --accent-color: #8c52ff;
+    /* Electric purple accent */
     --accent-glow: rgba(140, 82, 255, 0.4);
+
+    /* Glassmorphism System */
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.08);
+
+    /* Typography */
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
+
+    /* Animation Constants */
     --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* --- Reset & Base Styles --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     cursor: none;
+    /* Hiding default cursor for custom implementation */
 }
 
 body {
@@ -22,10 +40,12 @@ body {
     color: var(--text-color);
     font-family: var(--font-body);
     overflow-x: hidden;
+    /* Prevent horizontal scroll from flying elements */
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Custom Cursor */
+/* --- Custom Cursor --- */
 .cursor-dot,
 .cursor-outline {
     position: fixed;
@@ -35,6 +55,7 @@ body {
     border-radius: 50%;
     z-index: 9999;
     pointer-events: none;
+    /* vital for clicking through */
 }
 
 .cursor-dot {
@@ -50,11 +71,12 @@ body {
     transition: width 0.2s, height 0.2s, background-color 0.2s;
 }
 
+/* Cursor Expansion on Hover */
 body:hover .cursor-outline {
     width: 40px;
 }
 
-/* Typography & Utility */
+/* --- Typography & Utilities --- */
 h1,
 h2,
 h3,
@@ -76,7 +98,15 @@ a {
     padding: 0 40px;
 }
 
-/* Navigation */
+/* Utility to center content */
+.center-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- Navigation --- */
 .nav-container {
     position: fixed;
     top: 0;
@@ -88,9 +118,11 @@ a {
     align-items: center;
     z-index: 100;
     opacity: 0;
+    /* Animated in by GSAP */
     transition: background 0.3s;
 }
 
+/* Glass effect on scroll */
 .nav-container.scrolled {
     background: rgba(5, 5, 5, 0.8);
     backdrop-filter: blur(10px);
@@ -138,7 +170,7 @@ a {
     width: 100%;
 }
 
-/* Dropdown Menu */
+/* Navigation Dropdown */
 .nav-item-dropdown {
     position: relative;
     height: 100%;
@@ -163,6 +195,7 @@ a {
     pointer-events: none;
 }
 
+/* Hover trigger for dropdown */
 .nav-item-dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
@@ -186,6 +219,7 @@ a {
 
 .dropdown-link:hover {
     background: rgba(255, 255, 255, 0.05);
+    /* Subtle highlight */
 }
 
 .dropdown-link .link-title {
@@ -202,7 +236,7 @@ a {
     font-family: var(--font-body);
 }
 
-/* Hero Section */
+/* --- Hero Section --- */
 .hero-section {
     height: 100vh;
     display: flex;
@@ -214,10 +248,12 @@ a {
 
 .hero-title {
     font-size: 8vw;
+    /* Responsive font size */
     line-height: 0.9;
     text-align: center;
     margin-bottom: 20px;
     mix-blend-mode: exclusion;
+    /* Cool overlay effect */
 }
 
 .word-line {
@@ -249,7 +285,7 @@ a {
     box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
 }
 
-/* Floating Shapes */
+/* Floating Shapes (Background) */
 .floating-shapes {
     position: absolute;
     top: 0;
@@ -264,6 +300,7 @@ a {
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
+    /* Soft glow diffuse */
     opacity: 0.4;
 }
 
@@ -292,7 +329,7 @@ a {
     opacity: 0.1;
 }
 
-/* Partners Marquee */
+/* --- Partners Marquee --- */
 .partners-section {
     padding: 60px 0;
     background: linear-gradient(to bottom, var(--bg-color), #0a0a0a);
@@ -306,6 +343,7 @@ a {
     overflow: hidden;
     display: flex;
     mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+    /* Fade edges */
 }
 
 .marquee-track {
@@ -330,6 +368,7 @@ a {
     text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
 }
 
+/* Marquee Controls */
 .marquee-controls {
     display: flex;
     justify-content: center;
@@ -367,7 +406,7 @@ a {
     color: black;
 }
 
-/* Section Basics */
+/* --- General Section Styles --- */
 .about-section,
 .projects-section,
 .contact-section {
@@ -388,6 +427,7 @@ a {
     margin-bottom: 60px;
 }
 
+/* Glass Card Component */
 .glass-card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
@@ -412,14 +452,38 @@ a {
     opacity: 0.7;
 }
 
-/* About Grid */
+/* Glass Button */
+.glass-btn {
+    display: inline-flex;
+    padding: 18px 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    color: white;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.glass-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(140, 82, 255, 0.3);
+    /* Accent glow */
+}
+
+/* --- About Grid --- */
 .about-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
 }
 
-/* Projects Grid */
+/* --- Projects Grid --- */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -433,6 +497,7 @@ a {
     transition: transform 0.4s ease;
 }
 
+/* Staggered layout feeling */
 .project-card:nth-child(2) {
     margin-top: 100px;
 }
@@ -458,9 +523,17 @@ a {
 
 .project-card:hover .placeholder-gradient {
     transform: scale(1.1);
+    /* Zoom effect */
 }
 
-/* News & Bento Grids */
+.placeholder-gradient img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- News & Bento Grids --- */
 .news-section,
 .newsletter-section,
 .blog-section {
@@ -501,6 +574,21 @@ a {
     transform: scale(1.05);
 }
 
+.bento-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.bento-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .bento-tag {
     align-self: flex-start;
     padding: 6px 14px;
@@ -528,7 +616,7 @@ a {
     gap: 10px;
 }
 
-/* Newsletter Form */
+/* --- Newsletter Form --- */
 .newsletter-form {
     display: flex;
     gap: 10px;
@@ -557,7 +645,7 @@ a {
     padding: 15px 30px;
 }
 
-/* Gallery Section Enhanced */
+/* --- Gallery Section --- */
 .gallery-section {
     padding: 120px 0;
     overflow: hidden;
@@ -567,12 +655,15 @@ a {
     overflow-x: auto;
     padding: 40px 0;
     -ms-overflow-style: none;
+    /* Hide scrollbar IE/Edge */
     scrollbar-width: none;
+    /* Hide scrollbar Firefox */
     cursor: grab;
 }
 
 .gallery-track-wrapper::-webkit-scrollbar {
     display: none;
+    /* Hide scrollbar Chrome/Safari */
 }
 
 .gallery-track {
@@ -598,12 +689,19 @@ a {
     opacity: 0.8;
 }
 
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .gallery-controls {
     margin-left: 40px;
     margin-bottom: 20px;
 }
 
-/* Testimonials */
+/* --- Testimonials --- */
 .testimonials-section {
     padding: 120px 0;
 }
@@ -659,7 +757,7 @@ a {
     opacity: 0.5;
 }
 
-/* Footer */
+/* --- Footer --- */
 .main-footer {
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     padding: 100px 0 40px;
@@ -723,6 +821,97 @@ a {
     opacity: 0.3;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.visitor-counter {
+    font-size: 10px;
+    opacity: 0.5;
+}
+
+/* --- Interactive Features --- */
+/* 3D Tilt */
+.interactive-tilt {
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+/* Modal System */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    padding: 20px;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 600px;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    padding: 40px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-date {
+    font-size: 0.8rem;
+    opacity: 0.5;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.modal-body p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* Go To Top Button */
+#go-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    color: black;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 900;
+    opacity: 0;
+    pointer-events: none;
+    /* Handled by JS */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
 }
 
 /* Gradients */
@@ -732,13 +921,66 @@ a {
 }
 
 .gradient-2 {
-    background: radial-gradient(circle at 70% 80%, rgba(255, 94, 0, 0.15), transparent 40%), linear-gradient(to bottom right, #222, #111);
+    background: radial-gradient(circle at 70% 80%, rgba(255, 0, 85, 0.15), transparent 40%), linear-gradient(to bottom right, #1a1a1a, #0a0a0a);
     position: relative;
 }
 
 .gradient-3 {
-    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05), transparent 60%), linear-gradient(to bottom right, #2a2a2a, #151515);
+    background: radial-gradient(circle at 50% 50%, rgba(0, 255, 170, 0.1), transparent 40%), linear-gradient(to bottom right, #1a1a1a, #0a0a0a);
     position: relative;
+}
+
+/* --- Media Queries (Responsiveness) --- */
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-card {
+        grid-column: span 1;
+        margin-top: 0 !important;
+        /* Reset staggered effect */
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bento-item.featured {
+        grid-column: span 1;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 14vw;
+    }
+
+    .nav-links {
+        display: none;
+        /* In a real scenario, adding a hamburger menu would be ideal */
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
 }
 
 /* Mobile */
